@@ -1,0 +1,69 @@
+<div class="sidebar-wrapper">
+  <section class="sidebar">
+    <a class="sidebar_logo" href="/">
+      <img
+        class="sidebar_logo-img"
+        src="/images/crm-logo.png"
+        width="160"
+        height="65"
+        alt="site-logo"
+      />
+    </a>
+
+    <nav class="sidebar_nav">
+      <ul class="sidebar_list">
+        <li class="sidebar_item">
+          <a
+            class="sidebar_link <%= path === '/' ? 'sidebar_link-active' : '' %>"
+            href="/"
+          >
+            <span class="sidebar_icon">
+              <img
+                class="first_icon"
+                src="/images/shopping.png"
+                width="=30"
+                height="30"
+                alt=""
+              />
+            </span>
+            Shopping
+          </a>
+        </li>
+        <li class="sidebar_item">
+          <a
+            class="sidebar_link <%= path === '/add-product' ? 'sidebar_link-active' : '' %>"
+            href="/add-product"
+          >
+            <span class="sidebar_icon">
+              <img
+                class="first_icon"
+                src="/images/plas.png"
+                width="=25"
+                height="25"
+                alt=""
+              />
+            </span>
+            Add Products
+          </a>
+        </li>
+        <li class="sidebar_item">
+          <a
+            class="sidebar_link <%= path === '/products' ? 'sidebar_link-active' : '' %>"
+            href="/products"
+          >
+            <span class="sidebar_icon">
+              <img
+                class="first_icon"
+                src="/images/parent.png"
+                width="=25"
+                height="25"
+                alt=""
+              />
+            </span>
+            All Products
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+</div>

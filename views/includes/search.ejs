@@ -1,0 +1,6 @@
+<form action="<%= path %>" method="GET" enctype="application/x-www-form-urlencoded">
+  <section class="product-search-box">
+    <input name="search" value="<% if (search) { %><%= search %> <% } else { %><% } %>" class="product-search-input" type="text" placeholder="name or barcode" autocomplete="off">
+    <button class="product-search-btn" type="submit">Search</button>
+  </section>
+</form>

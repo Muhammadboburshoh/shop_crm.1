@@ -1,0 +1,21 @@
+<header class="header">
+  <div class="header__right">
+    <% if(path === '/') { %> 
+      <div class="basket-img-wrapper">
+        <img class="basket-img" src="/images/basket.png" width="50" height="50" alt="basket" />
+      </div>
+    <% } %> 
+    <div class="profile">
+      <button class="profile__btn">
+        <img src="/images/Profile.svg" width="25" height="20" alt="" />
+      </button>
+      <span class="profile__name"> <%= username %> </span>
+      <div class="profile__wrapper">
+        <button class="logout-btn">
+          Chiqish
+          <img class="logout-img" src="/images/logout.svg" alt="logout" />
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

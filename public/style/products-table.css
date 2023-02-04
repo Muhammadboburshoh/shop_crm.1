@@ -1,0 +1,122 @@
+.products__list-main {
+  outline: 1px solid #ddd;
+  text-align: center;
+}
+
+.products__list {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.products__list-header,
+.products_list-columns,
+.products_list-columns-item-samll {
+  outline: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+}
+
+.products__list-header {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.products__list-header {
+  font-weight: bold;
+}
+
+.products_list-columns:nth-child(even) {
+  background-color: #e7e6e6;
+}
+
+.products__list-header-item,
+.products_list-columns-item {
+  padding: 10px 0;
+  outline: 1px solid #ddd;
+}
+
+.products_list-columns-item-therd {
+  flex-wrap: 1;
+  align-items: center;
+}
+
+.products_list-columns-small {
+  outline: 1px solid #ddd;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.p-item-first {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 5px;
+}
+.p-item-second {
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.p-item-third,
+.p-item-fourth {
+  min-width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.p-item-fifth {
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.p-item-sixth {
+  text-align: center;
+  min-width: 105px;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  justify-content: space-between;
+}
+
+.p-item-seventh {
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  padding: 10px 5px;
+  justify-content: center;
+}
+
+
+/* sale page */
+.sale-p-item-second {
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sale-p-item-fourth {
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sale-p-item-seventh {
+  min-width: 250px;
+  display: flex;
+  align-items: center;
+  /* padding: 10px 5px; */
+  justify-content: center;
+}

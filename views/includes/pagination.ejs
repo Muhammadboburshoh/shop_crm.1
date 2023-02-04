@@ -1,0 +1,15 @@
+<section class="pagination">
+  <% if(currentPage !== 1 && perviousPage !== 1) { %>
+      <a href="?page=1<% if (search) { %>&search=<%= search %> <% } else { %><% } %>">1</a>
+  <% } %> 
+  <% if(hasPerviousPage) { %> 
+      <a href="?page=<%= perviousPage %><% if (search) { %>&search=<%= search %> <% } else { %><% } %>" ><%= perviousPage %> </a>
+  <% } %>
+  <a href="?page=<%= currentPage %><% if (search) { %>&search=<%= search %> <% } else { %><% } %>" class="active"><%= currentPage %> </a>
+  <% if(hasNextPage) { %> 
+      <a href="?page=<%= nextPage %><% if (search) { %>&search=<%= search %> <% } else { %><% } %>" ><%= nextPage %> </a>
+  <% } %>
+  <% if(lastPage !== currentPage && nextPage !== lastPage) { %> 
+      <a href="?page=<%= lastPage %><% if (search) { %>&search=<%= search %> <% } else { %><% } %>" ><%= lastPage %> </a>
+  <% } %> 
+</section>

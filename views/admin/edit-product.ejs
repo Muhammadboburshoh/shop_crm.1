@@ -1,0 +1,58 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/style/header.css">
+  </head>
+
+  <body>
+    <div class="main-wrapper">
+      <%- include('../includes/navbar.ejs') %>
+  
+      <div class="content-wrapper">
+        <%- include('../includes/header-right.ejs') %>
+
+        <% if (prodCreateing) {%>
+          <div class="massage-box">
+            <p class="creating-product">
+              Product yaratildi!
+            </p>
+          </div>
+        <% } %>
+
+        <section class="main-content-wrapper">
+          <form class="category__create-form" action="/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST" enctype="application/x-www-form-urlencoded">
+            <h3 class="parrent-hading">Yangi product qo'shing!</h3>
+            <div class="input-wrapper">
+              <label for="name">Product nomi: </label>
+              <input name="name" class="category__create-input" type="text" placeholder="name" required value="<% if (editing) { %><%= product.name %><% } %>" id="name"/ autocomplete="off">
+            </div>
+            <div class="input-wrapper">
+              <label for="barcode">Shrix code raqamlarini kiriting: </label>
+              <input name="barcode" class="category__create-input" type="number" placeholder="barcode" value="<% if (editing) { %><%= product.barcode %><% } %>" id="barcode"/ autocomplete="off">
+            </div>
+            <div class="input-wrapper">
+              <label for="count">Product soni: </label>
+              <input name="count" class="category__create-input" type="number" placeholder="count" required value="<% if (editing) { %><%= product.count %><% } %>" id="count" autocomplete="off"/ min="0">
+            </div>
+            <div class="input-wrapper">
+              <label for="original_price">Sotib olingan narx: </label>
+              <input name="original_price" class="category__create-input" type="number" placeholder="orginal price" required value="<% if (editing) { %><%= product.original_price %><% } %>" id="original_price" autocomplete="off"/>
+            </div>
+            <div class="input-wrapper">
+              <label for="sale_price">Sotuvdagi narxi: </label>
+              <input name="sale_price" class="category__create-input" type="number" placeholder="markup price" required value="<% if (editing) { %><%= product.sale_price %><% } %>" id="sale_price" autocomplete="off"/>
+            </div>
+            <div class="input-wrapper">
+              <label for="description">Mahsulot haqida: </label>
+              <textarea name="description" class="category__create-input textarea-style" placeholder="description" id="description"><% if (editing) { %><%= product.description %><% } %></textarea>
+            </div>
+            <% if (editing) { %>
+              <input type="hidden" value="<%= product.id %>" name="prodId">
+              <input type="hidden" value="<%= product.pi_id %>" name="prodItemId">
+          <% } %>
+            <button class="category__create-btn parent-btn" type="submit"><% if (editing) { %>Edit Product<% } else { %>Qo'shish<% } %></button>
+          </form>
+        </section>
+      </div>
+    </div>
+
+    <script src="/js/admin.js"></script>
+  <%- include('../includes/end.ejs') %>

@@ -1,0 +1,136 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/style/header.css">
+    <link rel="stylesheet" href="/style/basket.css">
+    <link rel="stylesheet" href="/style/products-table.css">
+  </head>
+
+  <body>
+    <div class="main-wrapper">
+      <%- include('../includes/navbar.ejs') %>
+  
+      <div class="content-wrapper">
+        <%- include('../includes/header-right.ejs') %>
+
+        <section class="main-content-wrapper">
+
+          <%- include('../includes/search.ejs') %>
+          
+          <% if (products.length > 0) { %>
+
+            <div class="products__list">
+              <div class="products__list-header">
+                <div class="products__list-header-item p-item-first">Name</div>
+                <div class="products__list-header-item sale-p-item-second">Barcode</div>
+                <div class="products__list-header-item sale-p-item-fourth">Sale Price</div>
+                <div class="products__list-header-item p-item-fifth">Count</div>
+                <div class="products__list-header-item sale-p-item-seventh">Add to Cart</div>
+              </div>
+              <div class="products__list-main">
+
+                <% for (let product of products) { %>
+                  <div class="products_list-columns">
+                    <div class="products_list-columns-item p-item-first"><%= product.name %></div>
+                    <div class="products_list-columns-item sale-p-item-second"><%= product.barcode %></div>
+                    <div class="products_list-columns-item sale-p-item-fourth"><%= product.sale_price.replace(/(?=(?:.{3})*$)/g, ' ') %></div>
+                    <div class="products_list-columns-item-therd">
+                      <% for (let i=0; i < product.original_price.length; i++ ) { %>
+                        <div class="products_list-columns-item-samll">
+                          <div class="products_list-columns-small p-item-fifth"><%= product.count[i] %></div>
+                          <div class="products_list-columns-item sale-p-item-seventh">
+                            <form action="/orders?page=<%= currentPage %><% if(search){ %>&search=<%= search %>  <% } %> " method="POST" enctype="application/x-www-form-urlencoded">
+                              <input type="hidden" name="prodId" value="<%= product.id %>">
+                              <input type="hidden" name="prodItemId" value="<%= product.pi_id[i] %>">
+                              <input type="number" name="count" class="category__create-input product_count" placeholder="count" min="1" max="<%= product.count[i] %>" required  autocomplete="off"/>
+                              <button type="submit" class="category__create-btn">
+                                <b style="font-size: 20px; padding: -5px;">+</b>
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      <% } %>
+                    </div>
+                  </div>
+                <% } %>
+
+              </div>
+            </div>
+
+              <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage, hasNextPage: hasNextPage, perviousPage: perviousPage, hasPerviousPage: hasPerviousPage, lastPage: lastPage}) %>
+
+          <% } else { %>
+            <h1>No Products Found!</h1>
+          <% } %>
+
+
+          <section class="d-none all-backet">
+            <div class="no-content"></div>
+            <div class="backet-content">
+              <section class="backet">
+                <div class="backet__container">
+                  <div class="basket__header">
+                    <img width="50" height="50" src="/images/basket.png" alt="basket" />
+                    <h2 class="basket__heading">Cart</h2>
+                    <button class="close_button"></button>
+                  </div>
+      
+                  <main class="basket__main">
+                    <% if(orders.length > 0) { %>
+
+                      <table class="basket-table">
+                        <thead>
+                          <tr>
+                            <th class="basket-th">Name</th>
+                            <th class="basket-th">Count</th>
+                            <th class="basket-th order_product_price">Price</th>
+                            <th class="basket-th">DEL</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% orders.forEach(p => { %> 
+                          <tr>
+                            <td class="basket-td"><%= p.name %></td>
+                            <td class="basket-td"><%= p.count %></td>
+                            <td class="basket-td"><%= p.total_price.replace(/(?=(?:.{3})*$)/g, ' ') %></td>
+                            <td class="basket-td">
+                              <button class="delete_btn"></button>
+                            </td>
+                          </tr>
+                          <% }) %> 
+                        </tbody>
+                      </table>
+
+                      <div class="price">
+                        <span>Jami: </span>
+                        <span>10000 so'm so'm</span>
+                      </div>
+                    <% } else { %>
+                      <h2>Not product orders</h2>
+                    <% } %>
+
+                    
+
+                    <!-- jsda shunga settime out qo'yish kk "big_order" classni qo'shish kk-->
+                    <h1 id="big_order" class="d-none">Buyurtma berildi!</h1>
+                    <div class="money_type-wrepper">
+                      <div>
+                        <input class="money_type" type="radio" name="money_type" value="cash" id="cash" checked>
+                        <label for="cash">Naqd pul</label>
+                      </div>
+                      <div>
+                        <input class="money_type" type="radio" name="money_type" value="card" id="card">
+                      <label for="card">Karta</label>
+                      </div>
+                    </div>
+                  </main> 
+                  <button class="basket__btn">Buyurtma berish</button>
+                </div>
+              </section>
+            </div>
+          </section>
+
+        </section>
+      </div>
+    </div>
+
+  <script src="/js/basket.js"></script>
+  <%- include('../includes/end.ejs') %>

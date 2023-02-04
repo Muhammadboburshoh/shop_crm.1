@@ -1,0 +1,1 @@
+insert into users(login, password) values ('abdulloh', crypt('1111', gen_salt('bf')))
