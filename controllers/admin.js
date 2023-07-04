@@ -1,6 +1,6 @@
 const Product = require('../models/product');
 
-const ITEMS_PER_PAGE = 5;
+const ITEMS_PER_PAGE = 3;
 
 exports.getProducts = async (req, res, next) => {
   const page = +req.query.page || 1;
@@ -11,7 +11,7 @@ exports.getProducts = async (req, res, next) => {
   try {
     const { products_count } = await Product.count(search);
     const products = await Product.fetchAll(search, page, ITEMS_PER_PAGE);
-console.log(products);
+    console.log(products_count);
     res.render('admin/all-products', {
       pageTitle: 'All Products',
       path: '/products',

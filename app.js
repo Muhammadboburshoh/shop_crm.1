@@ -33,4 +33,4 @@ app.use((error, req, res, next) => {
   });
 });
 
-app.listen(process.env.PORT || 3004, console.log('Server running'));
+app.listen(process.env.PORT || 3004, console.log('Server running: 3004'));

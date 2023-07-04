@@ -173,30 +173,6 @@ begin
 end;
 $$;
 
-------------------------------------------
---product count
-drop function products_count;
-create function products_count(_search text) returns integer language plpgsql as $$
-begin
-  if _search is not null then
-    return
-    (select
-      count(*) as count
-    from
-      products
-    where
-      (name ilike '%' || _search || '%' or barcode ilike '%' || _search || '%') and is_delete = false);
-  else
-    return
-      (select
-        count(*) as count
-      from
-        products
-      where
-        is_delete = false);
-  end if;
-end;
-$$;
 
 ------------------------------------------
 --Find product
