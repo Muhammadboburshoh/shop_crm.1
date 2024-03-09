@@ -35,4 +35,11 @@ module.exports = class Order {
   static findById(prodId, prodItemId) {}
 
   static deleteById(prodId, prodItemId) {}
+
+  static totalPrice(userId) {
+    const totalPriceSql = `
+      select * from order_total_price($1)
+    `;
+    return row(totalPriceSql, userId);
+  }
 };

@@ -12,7 +12,8 @@ exports.getProducts = async (req, res, next) => {
   try {
     const { products_count } = await Product.count(search);
     const products = await Product.fetchAll(search, page, ITEMS_PER_PAGE);
-
+    const {order_total_price: totalPrice } = await Order.totalPrice(userId);
+    console.log(await Order.totalPrice(userId));
     const orders = await Order.fetchAll(userId);
 
     res.render('shop/product-list', {
@@ -27,7 +28,8 @@ exports.getProducts = async (req, res, next) => {
       nextPage: page + 1,
       perviousPage: page - 1,
       lastPage: Math.ceil(products_count / ITEMS_PER_PAGE),
-      search: search
+      search: search,
+      totalPrice: totalPrice
     });
   } catch (err) {
     const error = new Error(err);

@@ -11,7 +11,7 @@ exports.getProducts = async (req, res, next) => {
   try {
     const { products_count } = await Product.count(search);
     const products = await Product.fetchAll(search, page, ITEMS_PER_PAGE);
-    console.log(products_count);
+    // console.log(products_count);
     res.render('admin/all-products', {
       pageTitle: 'All Products',
       path: '/products',

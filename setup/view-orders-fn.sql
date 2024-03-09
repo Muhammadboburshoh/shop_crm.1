@@ -40,3 +40,16 @@ begin
       array_agg(oi.id);
 end;
 $$;
+
+
+drop function order_total_price;
+create function order_total_price(_u_id int) returns bigint language plpgsql as $$
+begin
+  return (
+    select
+      sum(total_price::bigint)
+    from
+      first_stage_orders(_u_id)
+  );
+end;
+$$;
